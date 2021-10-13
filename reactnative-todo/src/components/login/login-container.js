@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, VStack, FormControl, ScrollView } from 'native-base';
 import { NativeModules } from 'react-native';
 
@@ -22,15 +22,8 @@ const callbackToComponentMap = {
 };
 
 function LoginContainer({ step, callbacks, error, setLoading, loading }) {
-  const [username, setUsername] = useState('');
-  const [pass, setPass] = useState('');
   const [err, setErr] = useState(error);
   const [, { setAuthentication }] = useContext(AppContext);
-
-  const getValueByType = {
-    PasswordCallback: pass,
-    NameCallback: username,
-  };
 
   const handleFailure = () => {
     setErr('Invalid username or password');
